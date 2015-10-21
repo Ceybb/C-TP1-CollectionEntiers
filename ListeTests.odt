@@ -1,0 +1,22 @@
+Liste des tests à effectuer
+
+Constructeur
+1	Appel standart
+
+Constructeur de copie
+6	Appel standart
+ 
+Méthode Ajouter()
+3	Appel sur une collection telle que nbElemtCourant < nbElemtMax
+4	Appel sur une collection telle que nb ElemtCourant = nbElemtMax
+
+Méthode Retirer()
+7	Appel standart	
+
+Méthode Ajuster()
+2	Appel sur une collection telle que nouvelleTaille > nbElemtCourant
+5	Appel sur une collection telle que nouvelleTaille < nbElemtCourant
+
+Méthode Réunir()
+8	Appel avec des collections telles que la somme des nbElemtCourant < nbElemtMax
+9	Appel avec des collections telles que la somme des nbElemtCourant > nbElemtMax
