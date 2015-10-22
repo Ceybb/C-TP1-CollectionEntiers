@@ -16,7 +16,6 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "CollectionEntiers.h"
 
-
 //----------------------------------------------------------------- PUBLIC
 
 void TestConstructeurAfficher1 ()
@@ -25,148 +24,194 @@ void TestConstructeurAfficher1 ()
 	collection.Afficher();
 }
 
-void TestAjuster2 ()
+void TestConstructeurDeuxAfficher1 ()
+{
+	int tab [] = {13, 28, 47, 59, 71, 1062, 0, 12};
+	CollectionEntiers collection(8,tab);
+	collection.Afficher();
+}
+
+void TestConstructeurDeuxAfficher2 ()
+{
+	int tab [] = {13, 28, 13, 59, 59, 1062, 0, 13, 20};
+	CollectionEntiers collection(9,tab);
+	collection.Afficher();
+}
+
+void TestConstructeurCopieAfficher1 ()
+{
+	CollectionEntiers collection (15);
+	collection.Ajouter(13);
+	collection.Ajouter(17);
+	collection.Ajouter(21);
+	collection.Ajouter(24);
+	CollectionEntiers collection2 (collection);
+	collection2.Afficher();
+}
+
+void TestConstructeurCopieAfficher2 ()
+{
+	CollectionEntiers collection (13);
+	collection.Ajouter(13);
+	collection.Ajouter(17);
+	collection.Ajouter(21);
+	collection.Ajouter(13);
+	collection.Ajouter(13);
+	collection.Ajouter(21);
+	collection.Ajouter(144);
+	CollectionEntiers collection2 (collection);
+	collection2.Afficher();
+}
+
+void TestAjouter1 ()
 {
 	CollectionEntiers collection (10);
+	collection.Ajouter(14);
+	collection.Ajouter(17);
+	collection.Ajouter(-165);
 	collection.Afficher();
-	int codeRetour;
-	codeRetour = collection.Ajuster(8);
-	cout << codeRetour << endl;
+}
+
+void TestAjouter2 ()
+{
+	CollectionEntiers collection (13);
+	collection.Ajouter(14);
+	collection.Ajouter(17);
+	collection.Ajouter(-165);
+	collection.Ajouter(17);
+	collection.Ajouter(17);
+	collection.Ajouter(1655);
 	collection.Afficher();
 }
 
 void TestAjouter3 ()
 {
-	CollectionEntiers collection (10);
-	collection.Afficher();
-	int codeRetour;
-	codeRetour = collection.Ajouter(13);
-	cout << codeRetour << endl;
-	collection.Afficher();
-}
-
-void TestAjouter4 ()
-{
-	CollectionEntiers collection (10);
-	collection.Afficher();
-	int codeRetour;
-	codeRetour = collection.Ajouter(13);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(17);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(21);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(32);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(103);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(27);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(8);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(0);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(2);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(17);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(5);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(15);
-	cout << codeRetour << endl;
-	collection.Afficher();
-	codeRetour = collection.Ajouter(35);
-	cout << codeRetour << endl;
-	collection.Afficher();
-}
-
-void TestAjuster5 ()
-{
-	CollectionEntiers collection (10);
-	collection.Ajouter(13);
+	CollectionEntiers collection (4);
+	collection.Ajouter(14);
 	collection.Ajouter(17);
-	collection.Ajouter(21);
-	collection.Ajouter(32);
-	collection.Ajouter(103);
-	collection.Afficher();
-	int codeRetour;
-	codeRetour = collection.Ajuster(3);
-	cout << codeRetour << endl;
+	collection.Ajouter(-165);
+	collection.Ajouter(17);
+	collection.Ajouter(17);
+	collection.Ajouter(133);
 	collection.Afficher();
 }
 
-void TestConstructeurCopieAfficher6 ()
+void TestRetirer1 ()
 {
-	CollectionEntiers collection (10);
-	collection.Ajouter(13);
+	CollectionEntiers collection (15);
+	collection.Ajouter(14);
 	collection.Ajouter(17);
-	collection.Ajouter(21);
-	collection.Ajouter(32);
-	CollectionEntiers collection2 (collection);
-	collection2.Afficher();
-}
-
-void TestRetirer7 ()
-{
-	CollectionEntiers collection (10);
-	collection.Ajouter(13);
+	collection.Ajouter(-165);
 	collection.Ajouter(17);
+	collection.Ajouter(17);
+	collection.Ajouter(133);
+	collection.Ajouter(78);
 	collection.Ajouter(21);
 	collection.Ajouter(13);
-	collection.Ajouter(32);
-	int nbVal = 3;
-	int * valARetirer;
-	valARetirer = new int [3];
-	valARetirer[0] = 21;
-	valARetirer[1] = 31;
-	valARetirer[2] = 13;
-	collection.Retirer(nbVal,valARetirer);
+	collection.Ajouter(114);
+	collection.Ajouter(218);
 	collection.Afficher();
-	delete (valARetirer);
+	int tab [] = {133, 78, -165};
+	collection.Retirer(3,tab);
+	collection.Afficher();
 }
 
-void TestReunir8 ()
+void TestRetirer2 ()
+{
+	CollectionEntiers collection (17);
+	collection.Ajouter(14);
+	collection.Ajouter(17);
+	collection.Ajouter(-165);
+	collection.Ajouter(17);
+	collection.Ajouter(17);
+	collection.Ajouter(133);
+	collection.Ajouter(78);
+	collection.Ajouter(21);
+	collection.Ajouter(13);
+	collection.Ajouter(114);
+	collection.Ajouter(218);
+	collection.Afficher();
+	int tab [] = {17, 13};
+	collection.Retirer(2,tab);
+	collection.Afficher();
+}
+
+void TestAjuster1 ()
+{
+	CollectionEntiers collection (17);
+	collection.Ajouter(71);
+	collection.Ajouter(44);
+	collection.Ajouter(-35);
+	collection.Ajouter(17);
+	collection.Ajouter(17);
+	collection.Ajouter(143);
+	int codeRetourAjuster;
+	codeRetourAjuster = collection.Ajuster(15);
+	collection.Afficher();
+	cout << codeRetourAjuster << endl;
+}
+
+void TestAjuster2 ()
+{
+	CollectionEntiers collection (17);
+	collection.Ajouter(71);
+	collection.Ajouter(44);
+	collection.Ajouter(-35);
+	collection.Ajouter(17);
+	collection.Ajouter(17);
+	collection.Ajouter(143);
+	int codeRetourAjuster;
+	codeRetourAjuster = collection.Ajuster(4);
+	collection.Afficher();
+	cout << codeRetourAjuster << endl;
+}
+
+void TestReunir1 ()
 {
 	CollectionEntiers collection (10);
 	collection.Ajouter(13);
 	collection.Ajouter(17);
-	collection.Ajouter(13);
+	collection.Ajouter(76);
 	collection.Ajouter(42);
 	CollectionEntiers collection2 (7);
 	collection2.Ajouter(41);
 	collection2.Ajouter(0);
 	collection2.Ajouter(12);
-	int codeRetour;
-	codeRetour = collection.Reunir(collection2);
-	cout << codeRetour << endl;
+	collection.Reunir(collection2);
 	collection.Afficher();
 }
 
-void TestReunir9 ()
+void TestReunir2 ()
 {
-	CollectionEntiers collection (5);
+	CollectionEntiers collection (14);
 	collection.Ajouter(11);
 	collection.Ajouter(24);
 	collection.Ajouter(0);
 	collection.Ajouter(42);
 	CollectionEntiers collection2 (7);
-	collection2.Ajouter(73);
-	collection2.Ajouter(108);
-	collection2.Ajouter(12);
-	int codeRetour;
-	codeRetour = collection.Reunir(collection2);
-	cout << codeRetour << endl;
+	collection2.Ajouter(24);
+	collection2.Ajouter(24);
+	collection2.Ajouter(128);
+	collection2.Ajouter(24);
+	collection2.Ajouter(-5874);
+	collection.Reunir(collection2);
+	collection.Afficher();
+}
+
+void TestReunir3 ()
+{
+	CollectionEntiers collection (6);
+	collection.Ajouter(11);
+	collection.Ajouter(24);
+	collection.Ajouter(0);
+	collection.Ajouter(42);
+	CollectionEntiers collection2 (7);
+	collection2.Ajouter(24);
+	collection2.Ajouter(24);
+	collection2.Ajouter(128);
+	collection2.Ajouter(24);
+	collection2.Ajouter(-5874);
+	collection.Reunir(collection2);
 	collection.Afficher();
 }
 
@@ -180,36 +225,39 @@ void TestConstructeurAfficher()
 void TestConstructeurDeuxAfficher()
 {
 	TestConstructeurDeuxAfficher1();
+	TestConstructeurDeuxAfficher2();
 }
 
 void TestConstructeurCopieAfficher()
 {
-	TestConstructeurCopieAfficher1;
+	TestConstructeurCopieAfficher1();
+	TestConstructeurCopieAfficher2();
 }
 
 void TestAjouter()
 {
-	TestAjouter1();  // ajout sans ajuster
-	TestAjouter2();  // ajout dun doublon sans ajuster
-	TestAjouter3();  //ajout avec ajustement
+	TestAjouter1();  
+	TestAjouter2(); 
+	TestAjouter3();
 }
 
-void TestRetirer()    // changer mode completion de la case vide
+void TestRetirer()  
 {
-	TestRetirer1();  // verif tab[i] = tab[nbElemtCourant] ET taille ajustée au mieux
-	TestRetirer2();  // verif enleve tous les doublons 
+	TestRetirer1();
+	TestRetirer2(); 
 }
 
-void TestAjuster()  // si taille demande == taile max ne rien faire
+void TestAjuster() 
 {
-	TestAjuster1();  // verif sans tronquer
-	TestAjuster2();  // verif en tronquant
+	TestAjuster1();  
+	TestAjuster2();
 }
 
 void TestReunir()
 {
-	TestReunir1();   // test sans ajuster
-	TestReunir2();   // test avec ajuster
+	TestReunir1();
+	TestReunir2();  
+	TestReunir3();
 }
 
 
@@ -218,7 +266,7 @@ int main ()
 {
 	TestConstructeurAfficher();
 	TestConstructeurDeuxAfficher();
-	TestConstructeurCopieAfficher()
+	TestConstructeurCopieAfficher();
 	TestAjouter();
 	TestRetirer();
 	TestAjuster();
