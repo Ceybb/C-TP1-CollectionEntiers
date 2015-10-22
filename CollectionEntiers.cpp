@@ -70,7 +70,7 @@ void CollectionEntiers::Retirer ( int nombreValeurs, int * valeurARetirer )
 int CollectionEntiers::Ajuster (int nouvelleTaille)
 // Algorithme : aucun
 {
-	int perteVal = 0;
+	int perteVal = collectionNonTronquee;
 	int * tabValeursModif = new int [nouvelleTaille];
 
 	for (int i=0; i<nouvelleTaille && i<nbElemtCourant;i++)
@@ -82,27 +82,25 @@ int CollectionEntiers::Ajuster (int nouvelleTaille)
 	if(nouvelleTaille < nbElemtCourant)
 	{
 		nbElemtCourant=nouvelleTaille;
-		perteVal = 1;
+		perteVal = collectionTronquee;
 	}
 	nbElemtMax=nouvelleTaille;
 	return perteVal;
-
 } //----- Fin de Méthode
 
 int CollectionEntiers::Reunir (CollectionEntiers collectionAAjouter)
 // Algorithme : aucun
 {
-	int necessAjust = 0;	
+	int necessAjust = 0;
 	if (nbElemtCourant + collectionAAjouter.nbElemtCourant > nbElemtMax)
 	{
 		Ajuster(nbElemtCourant + collectionAAjouter.nbElemtCourant);
 		necessAjust = 1;
 	}
-	for (int i = 0 ; i<collectionAAjouter.nbElemtCourant-1 ; i++)
+	for (int i = 0 ; i<collectionAAjouter.nbElemtCourant ; i++)
 	{
 		Ajouter(collectionAAjouter.tabValeurs[i]);
 	}
-	nbElemtCourant=nbElemtCourant+collectionAAjouter.nbElemtCourant;
 	return necessAjust;	
 } //----- Fin de Méthode
 
@@ -133,6 +131,20 @@ CollectionEntiers::CollectionEntiers ( unsigned int nbElemtInitial )
     nbElemtCourant = 0;
     tabValeurs = new int[nbElemtMax];
 } //----- Fin de CollectionEntiers
+
+CollectionEntiers::CollectionEntiers (int tailleTab, int * tab)
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <CollectionEntiers>" << endl;
+#endif
+    nbElemtMax = tailleTab;
+    nbElemtCourant = tailleTab;
+    tabValeurs = new int[nbElemtMax];
+    for (int i=0;i<nbElemtMax;i++)
+    {       
+	    tabValeurs[i] = tab[i];	    
+    }
+}
 
 CollectionEntiers::~CollectionEntiers ( )
 // Algorithme : aucun
