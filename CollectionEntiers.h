@@ -44,16 +44,17 @@ public:
 	// Lors de chaque retrait, l'entier en dernière position dans la collection est déplacé à la position libérée par l'entier retiré
 	// Si plusieurs entiers de la collection ont une même valeur présente dans valeurARetirer, alors ils sont tous retirés
 	// La taille maximale de la collection à l'issue des retraits d'entiers est fixée de manière optimale (plus petite taille permettant de stocker tous les entiers 		// restants)
-	// Contrat : nombreValeurs doit correspondre à la taille de valeursARetirer et les valeurs des entiers contenus dans valeursARetirer doivent être distincts
+	// Contrat : nombreValeurs doit correspondre à la taille de valeursARetirer et les valeurs des entiers contenus dans valeursARetirer doivent être distinctes
 
 	int Ajuster (unsigned int nouvelleTailleMax);
 	// Mode d'emploi :
 	// Ajuste la taille maximale d'une collection à la taille nouvelleTaille
 	// Si nouvelleTaille est inférieure au nombre d'entiers contenus dans la collection, la collection sera tronquée afin de respecter l'ajustement de la taille
 	// maximale et des entiers seront perdus
+	// La méthode renvoie un code de retour entier qui peut prendre la valeur collectionNonTronquee ou collectionTronquee
 	// Contrat : aucun   
 
-	void Reunir (CollectionEntiers collectionAAjouter);
+	void Reunir (CollectionEntiers &collectionAAjouter);
 	// Mode d'emploi :
 	// Ajoute le contenu de la collection d'entiers passée en paramètre (collectionAAjouter) à la collection sur laquelle la méthode est appelée
 	// Les entiers ajoutés sont placés à la suite de ceux déjà présents dans la collection et dans leur ordre initial (avant réunion)
@@ -63,12 +64,6 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-	CollectionEntiers ( const CollectionEntiers & unCollectionEntiers );
-	// Mode d'emploi (constructeur de copie) :
-	// Construit une collection d'entiers identique à unCollectionEntiers :
-	// tailles maximales et contenus identiques
-	// Contrat : aucun    
-
 	CollectionEntiers ( unsigned int tailleMax );
 	// Mode d'emploi :
 	// Construit une collection d'entiers de taille maximale tailleMax
