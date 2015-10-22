@@ -14,74 +14,84 @@ enum codeRetour {collectionNonTronquee, collectionTronquee};
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <CollectionEntiers>
-//
-//
+// Gestion d'une collection de nombres entiers stockés dans un tableau :
+// ajout et suppression d'un entier, ajustement de la taille maximale d'une
+// collection, réunion et affichage de collections
 //------------------------------------------------------------------------ 
 
 class CollectionEntiers
 {
 //----------------------------------------------------------------- PUBLIC
-
 public:
 //----------------------------------------------------- Méthodes publiques
-    void Afficher () const;
-    // Mode d'emploi :
-    // Affiche la valeur de chaque elements contenus dans une collection d'entiers separes par un espace
-    // Contrat : aucun
+	void Afficher () const;
+	// Mode d'emploi :
+	// Affiche la valeur de chaque entiers contenus dans la collection separés par un espace
+	// Retour à la ligne automatique en bout de ligne
+	// Contrat : aucun
 
-    int Ajouter (int nouvelleValeur);
-    // Mode d'emploi :
-    // Ajoute un element après les autres dans le tableau de valeurs
-    // Contrat : aucun
+	void Ajouter (int nouvelleValeur);
+	// Mode d'emploi :
+	// Ajoute un entier à la suite des autres dans la collection
+	// Les doublons ne sont pas gérés (possibilité qu'une même collection possède plusieurs fois le même entier)
+	// Les entier sont triés par ordre d'insertion (le dernier entier ajouté est à la dernière place)
+	// La taille maximale de la collection est augmentée de 1 si nécessaire
+	// Contrat : aucun
 
-    void Retirer ( int nombreValeurs, int * valeursARetirer );
-    // Mode d'emploi :
-    // Retire les valeurs presentes dans le tableau valeursARetirer
-    // nombreValeurs indique le nombre de valeurs differentes a retirer cest a dire le nombre delement de valeursARetirer
-    // si une valeur de valeursARetirer est presente en plusieurs exemplaires, ces derniers seront tous retires
-    // Contrat : les valeurs fournies dans valeursAretirer doivent etre differentes
+	void Retirer ( int nombreValeurs, int * valeursARetirer );
+	// Mode d'emploi :
+	// Retire les entiers de la collection dont la valeur est contenue dans valeursARetirer
+	// Lors de chaque retrait, l'entier en dernière position dans la collection est déplacé à la position libérée par l'entier retiré
+	// Si plusieurs entiers de la collection ont une même valeur présente dans valeurARetirer, alors ils sont tous retirés
+	// La taille maximale de la collection à l'issue des retraits d'entiers est fixée de manière optimale (plus petite taille permettant de stocker tous les entiers 		// restants)
+	// Contrat : nombreValeurs doit correspondre à la taille de valeursARetirer et les valeurs des entiers contenus dans valeursARetirer doivent être distincts
 
-    int Ajuster (int nouvelleTaille);
-    // Mode d'emploi :
-    // Ajuste la taille du tableau à la taille demandée. Par défaut, on ajuste à une case vide de plus que nbElemtCourant.
-    // Si nouvelleTaille est inférieure à nbElemtCourant, on perd les éléments d'indice entre nouvelleTaille et nbElemtCourant.
-    // Contrat : la nouvelle taille doit être positive.    
+	int Ajuster (unsigned int nouvelleTailleMax);
+	// Mode d'emploi :
+	// Ajuste la taille maximale d'une collection à la taille nouvelleTaille
+	// Si nouvelleTaille est inférieure au nombre d'entiers contenus dans la collection, la collection sera tronquée afin de respecter l'ajustement de la taille
+	// maximale et des entiers seront perdus
+	// Contrat : aucun   
 
-    int Reunir (CollectionEntiers collectionAAjouter);
-    // Mode d'emploi :
-    // Ajoute au contenu de la collection d'entiers "collection" sur laquelle est appelée la méthode le contenu de collectionAAjouter
-    // Contrat : aucun
+	void Reunir (CollectionEntiers collectionAAjouter);
+	// Mode d'emploi :
+	// Ajoute le contenu de la collection d'entiers passée en paramètre (collectionAAjouter) à la collection sur laquelle la méthode est appelée
+	// Les entiers ajoutés sont placés à la suite de ceux déjà présents dans la collection et dans leur ordre initial (avant réunion)
+	// Si la taille maximale de la collection sur laquelle la méthode est appelée est insuffisante pour stocker le contenu des deux collection réunies, alors elle est
+	// ajustée de manière optimale (plus petite taille permettant de stocker tous les entiers)
+	// Contrat : aucun
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    CollectionEntiers ( const CollectionEntiers & unCollectionEntiers );
-    // Mode d'emploi (constructeur de copie) :
-    // Construit un tableau d'entiers identique à unCollectionEntiers (même tailles utilisées et max, et même valeurs)
-    // Contrat : aucun    
+	CollectionEntiers ( const CollectionEntiers & unCollectionEntiers );
+	// Mode d'emploi (constructeur de copie) :
+	// Construit une collection d'entiers identique à unCollectionEntiers :
+	// tailles maximales et contenus identiques
+	// Contrat : aucun    
 
-    CollectionEntiers ( unsigned int nbElemtInitial );
-    // Mode d'emploi :
-    // Construit un tableau d'entiers de taille variable initialisee a nbElemtInitial
-    // Contrat : aucun
+	CollectionEntiers ( unsigned int tailleMax );
+	// Mode d'emploi :
+	// Construit une collection d'entiers de taille maximale tailleMax
+	// Contrat : aucun
 
-    CollectionEntiers (int tailleTab, int * tab);
-    // Mode d'emploi :
-    // Construit une collection d'entiers à partir d'un tableau d'entiers tab et de sa taille tailleTab en concervant l'ordre des valeurs
-    // Contrat : aucun 
+	CollectionEntiers (unsigned int tailleTab, int * tab);
+	// Mode d'emploi :
+	// Construit une collection d'entiers à partir d'un tableau d'entiers tab et de sa taille tailleTab en concervant l'ordre des valeurs
+	// et en fixant la taille maximale de la collection à tailleTab
+	// Contrat : tailleTab doit correspondre à la taille de tab
 
-    virtual ~CollectionEntiers ( );
-    // Mode d'emploi :
-    // Libère la mémoire allouée pour le tableau de valeurs tabValeurs
-    // Contrat : aucun
+	virtual ~CollectionEntiers ( );
+	// Mode d'emploi :
+	// Libère la mémoire allouée pour stocker la collection d'entiers
+	// Contrat : aucun
+
 
 //------------------------------------------------------------------ PRIVE 
-
 private:
 //------------------------------------------------------- Attributs privés
-    int nbElemtMax;
-    int nbElemtCourant;
-    int * tabValeurs;
+	int nbElemtMax; // taille maximale de la collection
+	int nbElemtCourant; // nombre d'entiers que contient la collection
+	int * tabValeurs; // contenu de la collection
 
 };
-
 #endif // COLLECTIONENTIERS_H
