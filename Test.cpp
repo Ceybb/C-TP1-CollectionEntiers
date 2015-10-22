@@ -26,14 +26,14 @@ void TestConstructeurAfficher1 ()
 
 void TestConstructeurDeuxAfficher1 ()
 {
-	int tab [] = {13, 28, 47, 59, 71, 1062, 0, 12};
+	int tab []={13, 28, 47, 59, 71, 1062, 0, 12};
 	CollectionEntiers collection(8,tab);
 	collection.Afficher();
 }
 
 void TestConstructeurDeuxAfficher2 ()
 {
-	int tab [] = {13, 28, 13, 59, 59, 1062, 0, 13, 20};
+	int tab []={13, 28, 13, 59, 59, 1062, 0, 13, 20};
 	CollectionEntiers collection(9,tab);
 	collection.Afficher();
 }
@@ -86,7 +86,7 @@ void TestRetirer1 ()
 	collection.Ajouter(114);
 	collection.Ajouter(218);
 	collection.Afficher();
-	int tab [] = {133, 78, -165};
+	int tab []={133, 78, -165};
 	collection.Retirer(3,tab);
 	collection.Afficher();
 }
@@ -106,7 +106,7 @@ void TestRetirer2 ()
 	collection.Ajouter(114);
 	collection.Ajouter(218);
 	collection.Afficher();
-	int tab [] = {17, 13};
+	int tab []={17, 13};
 	collection.Retirer(2,tab);
 	collection.Afficher();
 }
@@ -121,7 +121,7 @@ void TestAjuster1 ()
 	collection.Ajouter(17);
 	collection.Ajouter(143);
 	int codeRetourAjuster;
-	codeRetourAjuster = collection.Ajuster(15);
+	codeRetourAjuster=collection.Ajuster(15);
 	collection.Afficher();
 	cout << codeRetourAjuster << endl;
 }
@@ -136,7 +136,7 @@ void TestAjuster2 ()
 	collection.Ajouter(17);
 	collection.Ajouter(143);
 	int codeRetourAjuster;
-	codeRetourAjuster = collection.Ajuster(4);
+	codeRetourAjuster=collection.Ajuster(4);
 	collection.Afficher();
 	cout << codeRetourAjuster << endl;
 }
