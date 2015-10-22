@@ -1,0 +1,68 @@
+Binôme 3203 
+Sébastien Di Giovanni
+Alan Barzasi
+
+Compte rendu TP C++ n°1 : Première classe simple
+
+Spécification et conception : 
+
+La phase d'analyse du cahier des charges nous a dirigé vers la manipulation de tableaux d'entiers, non triés, pouvant comporter des doublons et accompagnés de nombres entiers permettant de connaître la taille du tableau et le nombre d'éléments qu'il contient.
+Nous souhaitons être capable d'afficher le contenu d'une collection, d'ajouter des éléments, d'en retirer plusieurs à la fois, de fusionner deux collections existantes et d'ajuster la taille d'une collection.
+
+
+Présentation de la structure de données retenue :
+
+Nous avons finalement convenu de réaliser une classe CollectionEntiers, comprenant trois attributs : un tableau d'entiers et deux entiers représentants le nombre d'éléments maximum pouvant être contenu par ce tableau et le nombre d'éléments courant i.e. effectivement contenu par le tableau.
+
+Ces attributs seront respectivement nommés par la suite tabValeurs, nbElemtMax et nbElemtCourant.  Ils permettent de définir et de manipuler les collections qui contiendront donc des entiers.
+
+
+
+Spécifications des méthodes :
+
+	Second constructeur : 
+Prend en paramètres un tableau d'entiers ainsi que sa taille.
+Créé une collection d'entiers qui contient les mêmes entiers que le tableau passé en paramètre et dont la taille ainsi que le nombre d'éléments contenus sont identiques à la taille du tableau.
+Les entiers sont triés au sein de la collection dans le même ordre que dans le tableau et les doublons ne sont pas gérés.
+ 
+	Ajouter :
+Prend en paramètre un unique entier à ajouter à la collection.
+Avant l'ajout, si le tableau d'entiers lié à la collection est plein, sa taille est augmentée de un à l'aide de la méthode Ajuster (non spécifiée dans ce document). 
+Ensuite, l'ajout a lieu et place le nouvel entier juste après le dernier élément du tableau.
+La méthode se termine par l'incrémentation du nombre d'éléments courant de la collection.
+
+	Retirer :
+Prend en paramètre un tableau d'entiers dont les valeurs doivent être distinctes, ainsi que la taille de ce tableau.
+Chaque entier de la collection dont la valeur est présente dans le tableau donné en paramètre est retiré : le dernier entier de la collection est déplacé à la position de l'entier retiré et le nombre d'éléments courant de la collection est réduit de un.
+Si plusieurs entiers de la collection on la même valeur et que celle-ci est présente dans le tableau de valeurs à retirer, alors tous ces entiers sont retirés de la collection.
+La taille du tableau lié à la collection est finalement réduite au nombre d'éléments courant de la collection. 
+
+	Réunir :
+Prend en paramètre une collection d'entiers notée collection2 
+Avant la réunion, si la taille du tableau lié à la collection sur laquelle est appelée la méthode, notée collection1, n'est pas suffisante pour stocker les entiers contenus dans chacune des deux collections, alors cette taille est augmentée de manière optimale (taille minimale permettant ce stockage).
+Ensuite, les entiers contenus dans collection2 sont ajoutés à la collection1. Ces entiers sont positionnés dans leur ordre initial (celui de collection2) à la suite des entiers contenus dans collection1.
+Le nombre d'éléments courant est finalement augmenté pour correspondre au nombre d'éléments présents dans collection1 avant la réunion plus le nombre d'éléments présents dans collection2.
+
+
+
+Tests Fonctionnels :
+
+Il est nécessaire de faire appel à la méthode Afficher() au sein des méthodes de test afin de vérifier, en complément du déroulement sans erreur du programme, que les méthodes réalisent bien les actions attendues.
+
+Second constructeur:
+	TestConstructeurDeuxAfficher1: Teste via l'affichage la création d'une collection à partir d'un tableau d'entiers.
+	TestConstructeurDeuxAfficher2: Vérifie que si le tableau d'entiers à partir duquel est créée la collection contient des doublons, ceux-ci sont bien présents dans la collection.
+
+Ajouter:
+	TestAjouter1: Créé une collection de taille 10 vide sur laquelle est appelée trois fois la méthode Ajouter(), puis appel de la méthode Afficher() pour vérifier que les ajouts ont été effectués correctement.
+	TestAjouter2: Vérifie que l'utilisation de plusieurs appels, sur une même collection, de la méthode Ajouter() avec une valeur identique en paramètre provoque bien l'ajout de doublons.
+	TestAjouter3: Vérifie que la taille d'une collection est bien ajustée lorsque l'appel de la méthode Ajouter() sur cette collection l'exige (appel sur une collection dont le nombre d'éléments courant est égal à sa taille).
+	
+Retirer:
+	TestRetirer1: Créé une collection de taille 15 sur laquelle est appelée à onze reprises la méthode Ajouter(), puis appel de la méthode Retirer() sur la même collection. Affiche la collection finalement obtenue pour vérifier que les retraits ont été correctement effectués.
+	TestRetirer2: Vérifie que, lors de l'appel de la méthode Retirer(), si l'une des valeurs à retirer est présentes plusieurs fois dans la collection, tous ces entiers qui ont ladite valeur soient bien retirés.
+	
+Réunir:
+	TestRéunir1: Créé deux collections collection1 et collection2, appelle à plusieurs reprises la méthode Afficher() sur chacune d'entre elles, puis appelle la méthode Réunir() sur collection1 avec collection2 comme paramètre (ici collection1 est de taille suffisante pour pouvoir stocker les valeurs présentes dans collection2 à la suite des siennes). Affiche collection1 pour vérifier que la réunion a eu lieu correctement.
+	TestRéunir2:Vérifie que si les deux collections mises en jeu dans une réunion contiennent des valeurs identiques, ces valeurs seront bien présentes en plusieurs exemplaires dans la réunion des deux collections.
+	TestRéunir3: Vérifie que si la collection sur laquelle est appelée la méthode Réunir() n'a pas une taille suffisante pour stocker toutes les valeurs de l'autre collection mise en jeu dans la réunion en plus des siennes, un ajustement optimal de sa taille est effectué (lui attribuant la taille minimale permettant un tel stockage).
