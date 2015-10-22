@@ -38,31 +38,6 @@ void TestConstructeurDeuxAfficher2 ()
 	collection.Afficher();
 }
 
-void TestConstructeurCopieAfficher1 ()
-{
-	CollectionEntiers collection (15);
-	collection.Ajouter(13);
-	collection.Ajouter(17);
-	collection.Ajouter(21);
-	collection.Ajouter(24);
-	CollectionEntiers collection2 (collection);
-	collection2.Afficher();
-}
-
-void TestConstructeurCopieAfficher2 ()
-{
-	CollectionEntiers collection (13);
-	collection.Ajouter(13);
-	collection.Ajouter(17);
-	collection.Ajouter(21);
-	collection.Ajouter(13);
-	collection.Ajouter(13);
-	collection.Ajouter(21);
-	collection.Ajouter(144);
-	CollectionEntiers collection2 (collection);
-	collection2.Afficher();
-}
-
 void TestAjouter1 ()
 {
 	CollectionEntiers collection (10);
@@ -228,12 +203,6 @@ void TestConstructeurDeuxAfficher()
 	TestConstructeurDeuxAfficher2();
 }
 
-void TestConstructeurCopieAfficher()
-{
-	TestConstructeurCopieAfficher1();
-	TestConstructeurCopieAfficher2();
-}
-
 void TestAjouter()
 {
 	TestAjouter1();  
@@ -266,7 +235,6 @@ int main ()
 {
 	TestConstructeurAfficher();
 	TestConstructeurDeuxAfficher();
-	TestConstructeurCopieAfficher();
 	TestAjouter();
 	TestRetirer();
 	TestAjuster();
