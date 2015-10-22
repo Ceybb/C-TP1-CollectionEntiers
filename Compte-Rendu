@@ -1,0 +1,33 @@
+Binôme 3203 
+Sébastien Di Giovanni
+Alan Barzasi
+
+Compte rendu TP C++n°1 : Première classe simple
+
+Spécification et conception : 
+
+La phase d'analyse nous a dirigé vers la manipulation de tableaux d'entiers, non triés, pouvant comporter des doublons et accompagnés de nombres permettant d'accéder aisément à la taille du tableau et au nombre d'éléments qu'il contient.
+Nous voulons pouvoir afficher le contenu d'une collection, ajouter librement des éléments, en retirer plusieurs à la fois si souhaité et fusionner deux collections existantes.
+
+Présentation de la structure de données retenue :
+
+Nous avons donc convenu après discussion avec le client de réaliser une classe CollectionEntier, comprenant trois attributs : un tableau d'entiers et deux entiers représentant le nombre d'éléments maximum pouvant être contenu par ce tableau et le nombre d'éléments courant i.e. effectivement contenu par le tableau.
+
+Ces attributs seront respectivement nommés par la suite tabValeurs, nbElemtMax et nbElemtCourant.  Ils permettent de manipuler plus aisément les collections qui contiendront donc des entiers.
+
+
+Spécifications des méthodes :
+
+	Second constructeur : 
+Prend en paramètres un tableau d'entiers dont on va utiliser les valeurs à la création de la collection ainsi que la taille de ce tableau. Celle-ci sera créé au plus juste en termes de taille.
+
+	Ajouter :
+Prend en paramètre un unique entier à ajouter à la collection. Avant l'ajout, on doit vérifier que le tableau n'est pas remplit. Si c'est le cas, on augmente sa taille d'un élément à l'aide de la méthode Ajuster (non spécifiée dans ce document). Ensuite, on peut ajouter juste après le dernier élément du tableau le nouvel entier. On termine en incrémentant nbElemtCourant.
+
+	Retirer :
+Prend en paramètre un nombre de valeurs à retirer et un tableau d'entiers contenant les-dites valeurs. Les valeurs du tableau doivent être distinctes. Si une des valeurs à retirer apparaît plusieurs fois dans la collection, elles sont toutes retirées.
+On parcourt la collection depuis la fin jusqu'au début en comparant chacune des valeurs à toutes les valeurs à retirer. Si la valeur à retirer est la dernière, on réduit juste nbElemtCourant d'un. Sinon, on   et on décrémente nbElemtCourant.
+On réduit ensuite la taille de tabValeurs au minimum, c'est à dire à nbElemtCourant à l'aide de la méthode Ajuster.  
+
+	Réunir :
+Prend en paramètre une collection d'entiers à ajouter à une autre. On vérifie que la collection est assez grande pour accueillir les valeurs de celle en paramètre, si ce n'est pas le cas, on ajuste à une taille correspondant à la somme des nombres d'éléments courants des deux collections concernées. On finit par modifier nbElemtCourant de la collection qui a subit la réunion.
