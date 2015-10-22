@@ -30,4 +30,4 @@ On parcourt la collection depuis la fin jusqu'au début en comparant chacune des
 On réduit ensuite la taille de tabValeurs au minimum, c'est à dire à nbElemtCourant à l'aide de la méthode Ajuster.  
 
 	Réunir :
-Prend en paramètre une collection d'entiers à ajouter à une autre. On vérifie que la collection est assez grande pour accueillir les valeurs de celle en paramètre, si ce n'est pas le cas, on ajuste à une taille correspondant à la somme des nombres d'éléments courants des deux collections concernées. On finit par modifier nbElemtCourant de la collection qui a subit la réunion.
+Prend en paramètre la référence d'une collection d'entiers à ajouter à une autre. On vérifie que la collection est assez grande pour accueillir les valeurs de celle en paramètre, si ce n'est pas le cas, on ajuste à une taille correspondant à la somme des nombres d'éléments courants des deux collections concernées. On finit par modifier nbElemtCourant de la collection qui a subit la réunion.
