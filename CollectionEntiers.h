@@ -26,7 +26,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	void Afficher () const;
 	// Mode d'emploi :
-	// Affiche la valeur de chaque entiers contenus dans la collection separés par un espace
+	// Affiche la valeur de chaque entiers contenus dans la collection séparés par un espace
 	// Retour à la ligne automatique en bout de ligne
 	// Contrat : aucun
 
@@ -34,7 +34,7 @@ public:
 	// Mode d'emploi :
 	// Ajoute un entier à la suite des autres dans la collection
 	// Les doublons ne sont pas gérés (possibilité qu'une même collection possède plusieurs fois le même entier)
-	// Les entier sont triés par ordre d'insertion (le dernier entier ajouté est à la dernière place)
+	// Les entiers sont triés par ordre d'insertion (le dernier entier ajouté est à la dernière place)
 	// La taille maximale de la collection est augmentée de 1 si nécessaire
 	// Contrat : aucun
 
@@ -58,7 +58,7 @@ public:
 	// Mode d'emploi :
 	// Ajoute le contenu de la collection d'entiers passée en paramètre (collectionAAjouter) à la collection sur laquelle la méthode est appelée
 	// Les entiers ajoutés sont placés à la suite de ceux déjà présents dans la collection et dans leur ordre initial (avant réunion)
-	// Si la taille maximale de la collection sur laquelle la méthode est appelée est insuffisante pour stocker le contenu des deux collection réunies, alors elle est
+	// Si la taille maximale de la collection sur laquelle la méthode est appelée est insuffisante pour stocker le contenu des deux collections réunies, alors elle est
 	// ajustée de manière optimale (plus petite taille permettant de stocker tous les entiers)
 	// Contrat : aucun
 
@@ -66,7 +66,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
 	CollectionEntiers ( unsigned int tailleMax );
 	// Mode d'emploi :
-	// Construit une collection d'entiers de taille maximale tailleMax
+	// Construit une collection d'entiers vide de taille maximale tailleMax
 	// Contrat : aucun
 
 	CollectionEntiers (unsigned int tailleTab, int * tab);
