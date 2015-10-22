@@ -29,7 +29,7 @@ void CollectionEntiers::Afficher () const
 	{	cout << tabValeurs[i] << ' ';
 	}
 	cout << endl;
-} //----- Fin de Méthode
+} //----- Fin de Méthode Afficher
 
 void CollectionEntiers::Ajouter (int nouvelleValeur )
 {	
@@ -38,7 +38,7 @@ void CollectionEntiers::Ajouter (int nouvelleValeur )
 	}
 	tabValeurs[nbElemtCourant]=nouvelleValeur;
 	nbElemtCourant++;
-} //----- Fin de Méthode
+} //----- Fin de Méthode Ajouter
 
 void CollectionEntiers::Retirer ( int nombreValeurs, int * valeurARetirer )
 {
@@ -58,7 +58,7 @@ void CollectionEntiers::Retirer ( int nombreValeurs, int * valeurARetirer )
 		}
 	}
 	Ajuster(nbElemtCourant);
-} //----- Fin de Méthode
+} //----- Fin de Méthode Retirer
 
 int CollectionEntiers::Ajuster (unsigned int nouvelleTailleMax)
 {
@@ -80,7 +80,7 @@ int CollectionEntiers::Ajuster (unsigned int nouvelleTailleMax)
 		nbElemtMax=nouvelleTailleMax;
 	}
 	return codeRetourAjuster;
-} //----- Fin de Méthode
+} //----- Fin de Méthode Ajuster
 
 void CollectionEntiers::Reunir (CollectionEntiers &collectionAAjouter)
 {
@@ -90,7 +90,7 @@ void CollectionEntiers::Reunir (CollectionEntiers &collectionAAjouter)
 	for (int i=0;i<collectionAAjouter.nbElemtCourant;i++)
 	{	Ajouter(collectionAAjouter.tabValeurs[i]);
 	}	
-} //----- Fin de Méthode
+} //----- Fin de Méthode Réunir
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -115,7 +115,7 @@ CollectionEntiers::CollectionEntiers (unsigned int tailleTab, int * tab)
     for (int i=0;i<nbElemtMax;i++)
     {       tabValeurs[i]=tab[i];	    
     }
-}
+} //----- Fin de CollectionEntiers
 
 CollectionEntiers::~CollectionEntiers ( )
 {
