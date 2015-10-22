@@ -41,3 +41,27 @@ Prend en paramètre une collection d'entiers notée collection2
 Avant la réunion, si la taille du tableau lié à la collection sur laquelle est appelée la méthode, notée collection1, n'est pas suffisante pour stocker les entiers contenus dans chacune des deux collections, alors cette taille est augmentée de manière optimale (taille minimale permettant ce stockage).
 Ensuite, les entiers contenus dans collection2 sont ajoutés à la collection1. Ces entiers sont positionnés dans leur ordre initial (celui de collection2) à la suite des entiers contenus dans collection1.
 Le nombre d'éléments courant est finalement augmenté pour correspondre au nombre d'éléments présents dans collection1 avant la réunion plus le nombre d'éléments présents dans collection2.
+
+Tests Fonctionnels :
+
+Il est nécessaire d'utiliser la méthode Afficher en plus des méthodes tester afin de vérifier, en dehors du déroulement sans erreur du programme, que tout ce passe correctement.
+
+Second constructeur:
+	TestConstructeurDeuxAfficher1: On teste via affichage la création d'une collection à partir d'un tableau de 8 valeurs.
+	TestConstructeurDeuxAfficher2: Idem avec 9 valeurs.
+
+Ajouter:
+	TestAjouter1: On crée une collection de taille 10 vide à laquelle on ajoute 3 valeurs, avant d'afficher la collection.
+	TestAjouter2: Idem avec une taille 13 et 6 valeurs. 
+	TestAjouter3: Idem avec une taille 4 et 6 valeurs, l'idée étant de tester si l'appel à Ajuster se fait correctement.
+	
+Retirer:
+	TestRetirer1: On crée une collection de taille 15 à laquelle on ajoute 11 valeurs, on retirer ensuite 3 valeurs à l'aide d'un tableau qui ne contient que des valeurs de la collection. On affiche le résultat.
+	TestRetirer2: Idem avec une taille 17 et 11 valeurs, on souhaite cette fois retirer des valeurs ayant des doublons. On affiche le résultat.
+	//Test avec des valeurs à retirer qui ne sont pas dans la collection?
+	
+Réunir:
+	TestRéunir1: On réunit sur une collection de taille 10 ayant 4 valeurs une collection de taille 7 ayant 3 valeurs. On affiche le résultat.
+	TestRéunir2: Idem avec une taille 14 et 4 valeurs et une taille 7 avec 5 valeurs. Affichage du résultat.
+	TestRéunir3: Idem avec une taille 6 et 4 valeurs et une taille 7 avec 5 valeurs. Affichage du résultat.
+	//Test avec une ou 2 collection(s) vide(s)?
