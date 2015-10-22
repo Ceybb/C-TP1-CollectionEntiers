@@ -21,42 +21,35 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void CollectionEntiers::Afficher () const
-// Algorithme : aucun
 {
 	#ifdef MAP
     		cout << nbElemtCourant << " / " << nbElemtMax << endl;
 	#endif
 	for (int i=0;i<nbElemtCourant;i++)
-	{
-		cout << tabValeurs[i] << ' ';
+	{	cout << tabValeurs[i] << ' ';
 	}
 	cout << endl;
 } //----- Fin de Méthode
 
 void CollectionEntiers::Ajouter (int nouvelleValeur )
-// Algorithme : aucun
 {	
-	if (nbElemtCourant == nbElemtMax)
-	{
-		Ajuster(nbElemtMax+1);
+	if (nbElemtCourant==nbElemtMax)
+	{	Ajuster(nbElemtMax+1);
 	}
-	tabValeurs [nbElemtCourant] = nouvelleValeur;
+	tabValeurs[nbElemtCourant]=nouvelleValeur;
 	nbElemtCourant++;
 } //----- Fin de Méthode
 
 void CollectionEntiers::Retirer ( int nombreValeurs, int * valeurARetirer )
-// Algorithme : aucun
 {
 	for (int i=nbElemtCourant-1;i>=0;i--)
-	{
-		for (int j=0;j<nombreValeurs;j++)
-		{
-			if(tabValeurs[i]==valeurARetirer[j])
-			{
+	{	for (int j=0;j<nombreValeurs;j++)
+		{	if(tabValeurs[i]==valeurARetirer[j])
+			{	
 				#ifdef MAP
     					cout << tabValeurs[i] << "==" << valeurARetirer[j] << endl;
  				#endif
-				tabValeurs[i] = tabValeurs[nbElemtCourant-1];
+				tabValeurs[i]=tabValeurs[nbElemtCourant-1];
 				nbElemtCourant--;
 				#ifdef MAP
     					Afficher();
@@ -68,26 +61,21 @@ void CollectionEntiers::Retirer ( int nombreValeurs, int * valeurARetirer )
 } //----- Fin de Méthode
 
 int CollectionEntiers::Ajuster (unsigned int nouvelleTailleMax)
-// Algorithme : aucun
 {
 	codeRetour codeRetourAjuster;
-	codeRetourAjuster = collectionNonTronquee;
-	if (nouvelleTailleMax == nbElemtMax)
-	{
-	}
+	codeRetourAjuster=collectionNonTronquee;
+	if (nouvelleTailleMax==nbElemtMax)
+	{}
 	else
-	{
-		int * tabValeursAjuste = new int [nouvelleTailleMax];
-		for (int i=0; i<nouvelleTailleMax && i<nbElemtCourant;i++)
-		{
-			tabValeursAjuste[i]=tabValeurs[i];
+	{	int * tabValeursAjuste=new int [nouvelleTailleMax];
+		for (int i=0;i<nouvelleTailleMax && i<nbElemtCourant;i++)
+		{	tabValeursAjuste[i]=tabValeurs[i];
 		}
 		delete[] tabValeurs;
 		tabValeurs=tabValeursAjuste;
-		if(nouvelleTailleMax < nbElemtCourant)
-		{
-			nbElemtCourant=nouvelleTailleMax;
-			codeRetourAjuster = collectionTronquee;
+		if(nouvelleTailleMax<nbElemtCourant)
+		{	nbElemtCourant=nouvelleTailleMax;
+			codeRetourAjuster=collectionTronquee;
 		}
 		nbElemtMax=nouvelleTailleMax;
 	}
@@ -95,29 +83,25 @@ int CollectionEntiers::Ajuster (unsigned int nouvelleTailleMax)
 } //----- Fin de Méthode
 
 void CollectionEntiers::Reunir (CollectionEntiers &collectionAAjouter)
-// Algorithme : aucun
 {
-	if (nbElemtCourant + collectionAAjouter.nbElemtCourant > nbElemtMax)
-	{
-		Ajuster(nbElemtCourant + collectionAAjouter.nbElemtCourant);
+	if (nbElemtCourant+collectionAAjouter.nbElemtCourant>nbElemtMax)
+	{	Ajuster(nbElemtCourant+collectionAAjouter.nbElemtCourant);
 	}
-	for (int i = 0 ; i<collectionAAjouter.nbElemtCourant ; i++)
-	{
-		Ajouter(collectionAAjouter.tabValeurs[i]);
+	for (int i=0;i<collectionAAjouter.nbElemtCourant;i++)
+	{	Ajouter(collectionAAjouter.tabValeurs[i]);
 	}	
 } //----- Fin de Méthode
 
 
 //-------------------------------------------- Constructeurs - destructeur
 CollectionEntiers::CollectionEntiers ( unsigned int tailleMax )
-// Algorithme : aucun
 {
 #ifdef MAP
     cout << "Appel au constructeur de <CollectionEntiers>" << endl;
 #endif
-    nbElemtMax = tailleMax;
-    nbElemtCourant = 0;
-    tabValeurs = new int[tailleMax];
+    nbElemtMax=tailleMax;
+    nbElemtCourant=0;
+    tabValeurs=new int[tailleMax];
 } //----- Fin de CollectionEntiers
 
 CollectionEntiers::CollectionEntiers (unsigned int tailleTab, int * tab)
@@ -125,17 +109,15 @@ CollectionEntiers::CollectionEntiers (unsigned int tailleTab, int * tab)
 #ifdef MAP
     cout << "Appel au constructeur de <CollectionEntiers>" << endl;
 #endif
-    nbElemtMax = tailleTab;
-    nbElemtCourant = tailleTab;
-    tabValeurs = new int[nbElemtMax];
+    nbElemtMax=tailleTab;
+    nbElemtCourant=tailleTab;
+    tabValeurs=new int[nbElemtMax];
     for (int i=0;i<nbElemtMax;i++)
-    {       
-	    tabValeurs[i] = tab[i];	    
+    {       tabValeurs[i]=tab[i];	    
     }
 }
 
 CollectionEntiers::~CollectionEntiers ( )
-// Algorithme : aucun
 {
 #ifdef MAP
     cout << "Appel au destructeur de <CollectionEntiers>" << endl;
