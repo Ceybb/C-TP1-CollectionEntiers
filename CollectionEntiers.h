@@ -8,8 +8,11 @@
 //---------- Interface de la classe <CollectionEntiers> (fichier CollectionEntiers.h) ------
 #if ! defined ( COLLECTIONENTIERS_H )
 #define COLLECTIONENTIERS_H
-#define MAP
 
+//------------------------------------------------------------------ Types 
+enum codeRetour {collectionNonTronquee, collectionTronquee};
+
+//------------------------------------------------------------------------ 
 // Rôle de la classe <CollectionEntiers>
 //
 //
@@ -54,12 +57,17 @@ public:
     CollectionEntiers ( const CollectionEntiers & unCollectionEntiers );
     // Mode d'emploi (constructeur de copie) :
     // Construit un tableau d'entiers identique à unCollectionEntiers (même tailles utilisées et max, et même valeurs)
-    // Contrat : aucun
+    // Contrat : aucun    
 
     CollectionEntiers ( unsigned int nbElemtInitial );
     // Mode d'emploi :
     // Construit un tableau d'entiers de taille variable initialisee a nbElemtInitial
     // Contrat : aucun
+
+    CollectionEntiers (int tailleTab, int * tab);
+    // Mode d'emploi :
+    // Construit une collection d'entiers à partir d'un tableau d'entiers tab et de sa taille tailleTab en concervant l'ordre des valeurs
+    // Contrat : aucun 
 
     virtual ~CollectionEntiers ( );
     // Mode d'emploi :
