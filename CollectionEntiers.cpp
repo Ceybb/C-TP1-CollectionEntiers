@@ -94,7 +94,7 @@ int CollectionEntiers::Ajuster (unsigned int nouvelleTailleMax)
 	return codeRetourAjuster;
 } //----- Fin de Méthode
 
-void CollectionEntiers::Reunir (CollectionEntiers collectionAAjouter)
+void CollectionEntiers::Reunir (CollectionEntiers &collectionAAjouter)
 // Algorithme : aucun
 {
 	if (nbElemtCourant + collectionAAjouter.nbElemtCourant > nbElemtMax)
@@ -109,21 +109,6 @@ void CollectionEntiers::Reunir (CollectionEntiers collectionAAjouter)
 
 
 //-------------------------------------------- Constructeurs - destructeur
-CollectionEntiers::CollectionEntiers ( const CollectionEntiers & unCollectionEntiers )
-// Algorithme : aucun
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de CollectionEntiers" << endl;
-#endif
-    nbElemtMax = unCollectionEntiers.nbElemtMax;
-    nbElemtCourant = unCollectionEntiers.nbElemtCourant;
-    tabValeurs = new int[nbElemtMax];
-    for (int i=0;i<nbElemtCourant;i++)
-    {
-	tabValeurs[i] = unCollectionEntiers.tabValeurs[i];
-    }
-} //----- Fin de CollectionEntiers (constructeur de copie)
-
 CollectionEntiers::CollectionEntiers ( unsigned int tailleMax )
 // Algorithme : aucun
 {
