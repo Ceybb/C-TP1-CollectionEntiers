@@ -10,7 +10,7 @@ La phase d'analyse du cahier des charges nous a dirigé vers la manipulation de 
 Nous souhaitons être capable d'afficher le contenu d'une collection, d'ajouter des éléments, d'en retirer plusieurs à la fois, de fusionner deux collections existantes et d'ajuster la taille d'une collection.
 
 
-Présentation de la structure de données retenue :
+Présentation de la structure de données retenue :
 
 Nous avons finalement convenu de réaliser une classe CollectionEntiers, comprenant trois attributs : un tableau d'entiers et deux entiers représentants le nombre d'éléments maximum pouvant être contenu par ce tableau et le nombre d'éléments courant i.e. effectivement contenu par le tableau.
 
@@ -18,7 +18,7 @@ Ces attributs seront respectivement nommés par la suite tabValeurs, nbElemtMax 
 
 
 
-Spécifications des méthodes :
+Spécifications des méthodes :
 
 	Second constructeur : 
 Prend en paramètres un tableau d'entiers ainsi que sa taille.
@@ -38,7 +38,7 @@ Si plusieurs entiers de la collection on la même valeur et que celle-ci est pr�
 La taille du tableau lié à la collection est finalement réduite au nombre d'éléments courant de la collection. 
 
 	Réunir :
-Prend en paramètre une collection d'entiers notée collection2 
+Prend en paramètre la référence d'une collection d'entiers notée collection2.
 Avant la réunion, si la taille du tableau lié à la collection sur laquelle est appelée la méthode, notée collection1, n'est pas suffisante pour stocker les entiers contenus dans chacune des deux collections, alors cette taille est augmentée de manière optimale (taille minimale permettant ce stockage).
 Ensuite, les entiers contenus dans collection2 sont ajoutés à la collection1. Ces entiers sont positionnés dans leur ordre initial (celui de collection2) à la suite des entiers contenus dans collection1.
 Le nombre d'éléments courant est finalement augmenté pour correspondre au nombre d'éléments présents dans collection1 avant la réunion plus le nombre d'éléments présents dans collection2.
@@ -72,5 +72,5 @@ Réunir:
 	TestRéunir2: Vérifie via l'appel à la méthode Afficher() que la méthode Réunir() fonctionne correctement lorsqu'elle est appelée sur une collection vide de taille nulle.
 	TestRéunir3: Vérifie via l'appel à la méthode Afficher() que la méthode Réunir() fonctionne correctement lorsque la collection en paramètre est vide de taille nulle
 	TestRéunir4: Vérifie via l'appel à la méthode Afficher() que la méthode Réunir() fonctionne correctement lorsqu'elle est appelée sur une collection vide de taille nulle avec une collection en paramètre qui est également vide et de taille nulle.
-	TestRéunir5:Vérifie que si les deux collections mises en jeu dans une réunion contiennent des valeurs identiques, ces valeurs seront bien présentes en plusieurs exemplaires dans la réunion des deux collections.
+	TestRéunir5: Vérifie que si les deux collections mises en jeu dans une réunion contiennent des valeurs identiques, ces valeurs seront bien présentes en plusieurs exemplaires dans la réunion des deux collections.
 	TestRéunir6: Vérifie que si la collection sur laquelle est appelée la méthode Réunir() n'a pas une taille suffisante pour stocker toutes les valeurs de l'autre collection mise en jeu dans la réunion en plus des siennes, un ajustement optimal de sa taille est effectué (lui attribuant la taille minimale permettant un tel stockage).
